@@ -172,7 +172,7 @@ const App: React.FC = () => {
               <div className="inline-block px-4 py-1 bg-[#0d1b3e] text-white text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
                 Synth Web Agency
               </div>
-              <h1 className="text-5xl md:text-8xl font-bold leading-[0.9] mb-10 text-black tracking-tighter">
+              <h1 className="text-5xl md:text-8xl font-bold leading-[0.9] mb-10 text-black tracking-tighter text-wrap">
                 AI Powered <br />
                 <span className="text-[#0d1b3e]">Design</span> For <br />
                 Modern Brands.
@@ -238,46 +238,56 @@ const App: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {PRICING_PLANS.map((plan, idx) => (
-              <div key={idx} className={`relative p-12 border-2 ${plan.isPrimary ? 'border-[#0d1b3e] bg-[#0d1b3e] text-white' : 'border-gray-200 bg-white text-black'}`}>
-                {plan.isPrimary && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-1 text-[10px] font-bold uppercase tracking-[0.3em]">
-                    Most Reliable
+              <div key={idx} className={`flex flex-col justify-between relative p-12 border-2 ${plan.isPrimary ? 'border-[#0d1b3e] bg-[#0d1b3e] text-white shadow-2xl' : 'border-gray-200 bg-white text-black'}`}>
+                <div>
+                  {plan.isPrimary && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-1 text-[10px] font-bold uppercase tracking-[0.3em]">
+                      Recommended Tier
+                    </div>
+                  )}
+                  <h4 className="text-xl font-bold mb-2 uppercase tracking-widest">{plan.name}</h4>
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-5xl font-bold">{plan.price}</span>
+                    <span className={`text-sm uppercase tracking-widest font-bold ${plan.isPrimary ? 'text-blue-200' : 'text-gray-400'}`}>{plan.frequency}</span>
                   </div>
-                )}
-                <h4 className="text-xl font-bold mb-2 uppercase tracking-widest">{plan.name}</h4>
-                <div className="flex items-baseline gap-2 mb-6">
-                  <span className="text-5xl font-bold">{plan.price}</span>
-                  <span className={`text-sm uppercase tracking-widest font-bold ${plan.isPrimary ? 'text-blue-200' : 'text-gray-400'}`}>{plan.frequency}</span>
+                  <p className={`mb-10 text-sm leading-relaxed ${plan.isPrimary ? 'text-blue-100' : 'text-gray-500'}`}>
+                    {plan.description}
+                  </p>
+                  <div className={`w-full h-px mb-10 ${plan.isPrimary ? 'bg-white/20' : 'bg-gray-100'}`}></div>
+                  <ul className="space-y-4 mb-12">
+                    {plan.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-4 text-sm font-medium">
+                        <svg className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.isPrimary ? 'text-blue-300' : 'text-[#0d1b3e]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className={`mb-10 text-sm leading-relaxed ${plan.isPrimary ? 'text-blue-100' : 'text-gray-500'}`}>
-                  {plan.description}
-                </p>
-                <div className={`w-full h-px mb-10 ${plan.isPrimary ? 'bg-white/20' : 'bg-gray-100'}`}></div>
-                <ul className="space-y-4 mb-12">
-                  {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-4 text-sm font-medium">
-                      <svg className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.isPrimary ? 'text-blue-300' : 'text-[#0d1b3e]'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
                 <a 
                   href="#contact" 
                   className={`block w-full text-center py-5 text-xs font-bold uppercase tracking-widest transition-all ${plan.isPrimary ? 'bg-white text-[#0d1b3e] hover:bg-black hover:text-white' : 'bg-black text-white hover:bg-[#0d1b3e]'}`}
                 >
-                  Apply Now
+                  {idx === 0 ? "Initialize Setup" : "Start Subscription"}
                 </a>
               </div>
             ))}
           </div>
           
-          <div className="mt-20 max-w-3xl mx-auto p-10 bg-gray-50 border-l-4 border-[#0d1b3e]">
-            <h5 className="font-bold text-lg mb-4">Note on Subscription Coverage</h5>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              Subscription covers website maintenance, server management, and minor content updates. Any work beyond minor content updates must be discussed and quoted separately to maintain high standards of delivery.
-            </p>
+          <div className="mt-20 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-10 bg-gray-50 border-l-4 border-[#0d1b3e]">
+              <h5 className="font-bold text-lg mb-4">Note on Subscription Coverage</h5>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Subscription covers website maintenance, server management, and minor content updates. Any work beyond minor content updates must be discussed and quoted separately to maintain high standards of delivery.
+              </p>
+            </div>
+            <div className="p-10 bg-gray-50 border-l-4 border-black">
+              <h5 className="font-bold text-lg mb-4">Digital Assurance</h5>
+              <p className="text-gray-600 text-sm leading-relaxed italic">
+                “Synth Web provides AI-assisted website design and management services and does not guarantee business results, search engine rankings, traffic, or revenue.”
+              </p>
+            </div>
           </div>
         </div>
       </section>

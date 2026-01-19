@@ -41,10 +41,10 @@ export const SERVICES: ServiceItem[] = [
 
 export const PRICING_PLANS: PricingPlan[] = [
   {
-    name: "One-Time Setup Fee",
+    name: "Uptime & Server Setup Fee",
     price: "R1000",
     frequency: "once-off",
-    description: "Mandatory initial configuration for all new infrastructure deployments.",
+    description: "(Required Before Subscription) Mandatory initial configuration for all new infrastructure deployments.",
     features: [
       "Initial server configuration",
       "Hosting environment setup",
@@ -60,17 +60,17 @@ export const PRICING_PLANS: PricingPlan[] = [
     isPrimary: true,
     features: [
       "Website maintenance",
-      "Guaranteed uptime and accessibility",
+      "Website remains live and accessible",
       "Basic uptime monitoring",
       "Server management",
       "Minor content updates",
-      "Technical stability & support"
+      "Technical stability and ongoing support"
     ]
   }
 ];
 
 export const ADD_ONS: AddOn[] = [
-  { title: "Monthly performance report", description: "Detailed analytics on visitor behavior and site performance." },
+  { title: "Monthly website performance report", description: "Detailed analytics on visitor behavior and site performance." },
   { title: "Competitor analysis sheet", description: "Ongoing tracking of industry rivals and positioning." },
   { title: "Image upgrades / enhanced visuals", description: "Premium visual assets and aesthetic refinements." },
   { title: "Booking system integration", description: "Seamless appointment and reservation capabilities." },
